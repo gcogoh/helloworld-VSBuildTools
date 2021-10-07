@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "echoCommand": true,
+    "options": {
+        "env": {
+            "outpath": "out",
+            "srcpath": "src",
+            "TargetName": "helloworld",
+            "TargetExt": "exe",
+            "vcvarsall": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Auxiliary\\Build\\vcvarsall.bat\" x64",
+        }
+    },
+    "tasks": [
+        {
+            "label": "C/C++: VS BuildTools build",
+            "command": "cmd",
+            "type": "process",
+            "args": [
+                "/C %vcvarsall% && cl /Od /Zi /EHsc /Fd:%outpath%/vc142.pdb /Fo:%outpath%/%TargetName%.obj %srcpath%/%TargetName%.cpp /link /OUT:%outpath%/%TargetName%.%TargetExt% /PDB:%outpath%/%TargetName%.pdb",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "C/C++: VS BuildTools clean",
+            "command": "cmd",
+            "type": "process",
+            "args": [
+                "/C del /s /q %outpath%",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        }
+    ],
+}
