@@ -7,6 +7,8 @@
 	"settings": {
 		"files.associations": {
 			"iostream": "cpp"
-		}
+		},
+		"astyle-format.path": "C:\\msys64\\mingw64\\bin\\astyle.exe",
+		"astyle-format.args": " --mode=c --style=ansi -t2 -C -S -K -Y"
 	}
 }
